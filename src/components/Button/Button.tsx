@@ -1,13 +1,13 @@
 import { Button } from '@chakra-ui/react'
+import { MouseEventHandler } from 'react'
 
 interface IButton {
     title: string,
-    // eslint-disable-next-line @typescript-eslint/ban-types
-    event: () => void 
+    onClick: MouseEventHandler
   }
 
-export const ButtonComp = ({ title, event }: IButton)=> {
+export const ButtonComp = ({ title, onClick }: IButton)=> {
     return (
-        <Button onClick={event} colorScheme='whatsapp'>{title}</Button>
+        <Button onClick={onClick} colorScheme='whatsapp'>{title}</Button>
     )
 }
