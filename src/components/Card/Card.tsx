@@ -1,34 +1,20 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { EmailIcon, LockIcon } from "@chakra-ui/icons"
-import { Box, Center, Heading, Input, InputGroup, InputLeftElement, Spinner } from "@chakra-ui/react"
+import { Box, Center, Heading, Input, InputGroup, InputLeftElement } from "@chakra-ui/react"
 import { ButtonComp } from "../Button/Button"
 import { login } from "../../services/login"
-import { useEffect, useState } from "react"
-import { api } from "../../api"
+import { useState } from "react"
 
-interface UserData {
-  email: string,
-  password: string,
-  name: string,
-}
+
 
 export const Card = () => {
   const [email, setEmail] = useState<string>('');
-  const [userData, setUserData] = useState<null | UserData>();
-
-  useEffect(() => {
-    const getData = async () => {
-      const data: any | UserData = await api
-      setUserData(data)
-    }
-    getData()
-  })
+  
 
   return (
     <Box backgroundColor={"white"} borderRadius="25px" padding="15px" minWidth="30vw" maxWidth="50vw">
-      {userData === null || userData === undefined ?
-        <Spinner size='xl' /> :
+      
         <>
           <Heading as='h3' size='md' textAlign='center'>Faça seu login</Heading>
           <InputGroup>
@@ -57,7 +43,7 @@ export const Card = () => {
             <ButtonComp title='Entrar' onClick={() => login(email)} />
           </Center>
         </>
-      }
+      {/* } */}
     </Box>
   )
 }
