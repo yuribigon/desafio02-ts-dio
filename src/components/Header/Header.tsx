@@ -1,17 +1,36 @@
-import { Stack, Heading } from "@chakra-ui/react"
+import { Flex, Text, Button, Box, Center, Spacer } from "@chakra-ui/react"
 import { useContext } from "react"
-import { AppContext } from "../../App";
-
+import { AppContext } from "../AppContext/AppContext";
+import { useNavigate } from "react-router-dom";
 
 export const Header = () => {
-    const context = useContext(AppContext);
-    console.log(context);
-    
+    const {setIsLoggedIn, isLoggedIn} = useContext(AppContext);
+    const navigate = useNavigate()
+
+    const logout = () => {
+        setIsLoggedIn(false);
+        navigate('/');
+    }
+
     return (
-        <Stack spacing='2' padding='15px'>
-            <Heading as='h2' size='xl' color='white'>
-                Sorteador Online
-            </Heading>
-        </Stack>
+        <Flex minWidth='100vw' backgroundColor='gray' padding='5px'>
+            <Box width='100vw'>
+                <Center color='white'>
+                    <Text fontSize='3xl'>Sorteador Online</Text>
+                </Center>
+            </Box>
+            <Spacer />
+            { isLoggedIn &&
+            <Box >
+                <Center>
+                    <Button
+                        onClick={() => logout()}
+                        >
+                        Sair
+                    </Button>
+                </Center>
+            </Box>
+                    }
+        </Flex>
     )
 }

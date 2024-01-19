@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Button } from '@chakra-ui/react'
-import { MouseEventHandler } from 'react'
+import { MouseEventHandler } from 'react';
 
 interface IButton {
     title: string,
-    onClick: MouseEventHandler
+    onClick: MouseEventHandler;
   }
 
 export const ButtonComp = ({ title, onClick }: IButton)=> {

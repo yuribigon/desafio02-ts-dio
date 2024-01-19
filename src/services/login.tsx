@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { api } from "../api"
+import { api } from "../api";
 
-export const login = async (email: string) : Promise<void> => {
-    const data : any = await api
+export const login = async (email: string): Promise<boolean> => {
+    const data: any = await api
 
     if (email !== data.email) {
-        return alert('Este e-mail não é válido')
+        return false
     }
-    alert(`${data.name} seu login foi realizado!`)    
+    return true
 }
